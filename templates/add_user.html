@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home</title>
+        <!-- Styles -->
+        <link href="{% static 'css/lib/calendar2/pignose.calendar.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/chartist/chartist.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/lib/weather-icons.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/lib/menubar/sidebar.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/helper.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+
+{#    左边菜单#}
+    {% include 'menu.html' %}
+
+
+{#    顶部显示#}
+    {% include 'top.html' %}
+
+
+        <!-- /# sidebar -->
+        <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>用户添加</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-4 p-l-0 title-margin-left">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">用户添加</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <section id="main-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-validation">
+                                        <form class="form-valide" action="/myapp/add_User/" method="post">
+
+                                            {% csrf_token %}
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username"> 登录名 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="ips-loginname" name="ips-loginname" placeholder="请输入登录名.." required="" value="{{ Login_name }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username"> 用户名 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="ips-username" name="ips-username" placeholder="请输入用户名.." required="" value="{{ UserName }}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 邮件地址 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="ips-email" name="ips-email" placeholder="请输入邮件地址.." required="" value={{ Email }}>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-password">密码 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="password" class="form-control" id="ips-password" name="ips-password" placeholder="请输入第一次密码.." required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-confirm-password">确认密码 <span class="text-danger">*  {{ ERROR_info }}</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="password" class="form-control" id="ips-confirm-password" name="ips-confirm-password" placeholder="..请确认密码！" required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 备注 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <textarea class="form-control" id="ips-describe" name="ips-describe" placeholder="备注信息" style="height:80px" required="">{{ Describe }}</textarea>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <div class="col-lg-8 ml-auto">
+                                                    <button type="submit" class="btn btn-primary"> 提 交 </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% include 'under.html' %}
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+        <!-- jquery vendor -->
+        <script src="{% static 'js/lib/jquery.min.js' %}"></script>
+        <script src="{% static 'js/lib/jquery.nanoscroller.min.js' %}"></script>
+        <!-- nano scroller -->
+        <script src="{% static 'js/lib/menubar/sidebar.js' %}"></script>
+        <script src="{% static 'js/lib/preloader/pace.min.js' %}"></script>
+        <!-- sidebar -->
+
+        <script src="{% static 'js/lib/bootstrap.min.js' %}"></script><script src="{% static 'js/scripts.js' %}"></script>
+        <!-- bootstrap -->
+
+        <script src="{% static 'js/lib/calendar-2/moment.latest.min.js' %}"></script>
+        <script src="{% static 'js/lib/calendar-2/pignose.calendar.min.js' %}"></script>
+        <script src="{% static 'js/lib/calendar-2/pignose.init.js' %}"></script>
+
+
+        <script src="{% static 'js/lib/weather/jquery.simpleWeather.min.js' %}"></script>
+        <script src="{% static 'js/lib/weather/weather-init.js' %}"></script>
+        <script src="{% static 'js/lib/circle-progress/circle-progress.min.js' %}"></script>
+        <script src="{% static 'js/lib/circle-progress/circle-progress-init.js' %}"></script>
+        <script src="{% static 'js/lib/chartist/chartist.min.js' %}"></script>
+        <script src="{% static 'js/lib/sparklinechart/jquery.sparkline.min.js' %}"></script>
+        <script src="{% static 'js/lib/sparklinechart/sparkline.init.js' %}"></script>
+        <script src="{% static 'js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
+        <!-- scripit init-->
+    <script src="{% static 'js/dashboard2.js' %}"></script>
+    </body>
+
+</html>

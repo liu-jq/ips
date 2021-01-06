@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* css 代码  */
+        </style>
+        <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    </head>
+    <body>
+        <div id="container" style="min-width:400px;height:400px"></div>
+        <script>
+            // JS 代码
+            // 创建渐变色
+            Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+                return {
+                    radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+                    stops: [
+                        [0, color],
+                        [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                    ]
+                };
+            });
+            // 构建图表
+            var chart = Highcharts.chart('container',{
+                title: {
+                    text: '******统计'
+                },
+                credits:{
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            },
+                            connectorColor: 'silver'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: '故障数',
+                    data: [
+                        ['**',       45.0],
+                        ['**',       26.8],
+                        ['**',       12.8],
+                        ['**',        8.5],
+                        ['**',        6.2],
+                        ['**',        0.7]
+                    ]
+                }]
+            });
+        </script>
+    </body>
+</html>

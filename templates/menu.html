@@ -1,0 +1,62 @@
+{% load static %}
+        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+            <div class="nano">
+                <div class="nano-content">
+                    <ul>
+                        <div class="logo"><a href="index.html"><!-- <img src="{% static 'images/logo.png' %}" alt="" /> --><span>Focus</span></a></div>
+                        <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> 图表 <span class="badge badge-primary">1</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="/myapp/index/">Dashboard</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="label">菜单</li>
+
+                        <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid4-alt"></i> 数据处理 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="#">数据提交</a></li>
+                                <li><a href="/myapp/upload/">Excel导入 </a></li>
+                                <li><a href="/myapp/delete_all_show/">数据清理 </a></li>
+                            </ul>
+                        </li>
+
+                        <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> 故障处理数据 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="/myapp/Add_Equipment_Downtime/">数据录入</a></li>
+                                <li><a href="/myapp/failure_upload/">Excel导入 </a></li>
+                                <li><a href="/myapp/failure_delete_all_show/">数据清理 </a></li>
+                                <li><a href="/myapp/show_failure_list/">查询 </a></li>
+
+                            </ul>
+                        </li>
+
+                        <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> 数据查询 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="/myapp/show_Data_overview/">总览表</a></li>
+                                <li><a href="/myapp/show_Data_electricMachinery/">电机</a></li>
+                                <li><a href="/myapp/show_Data_voltageLevel/">电压等级</a></li>
+                                <li><a href="/myapp/Show_Data_DeviceType/">设备类型</a></li>
+                                <li><a href="#">设备型号</a></li>
+                                <li><a href="#">设备号</a></li>
+                                <li><a href="/myapp/show_Data_InstallationPosition/">安装位置</a></li>
+                                <li><a href="/myapp/show_Data_MaintenanceLevel/">维护等级</a></li>
+                                <li><a href="/myapp/show_Data_OverhaulContents/">检修内容</a></li>
+                                <li><a href="/myapp/show_Data_OverhaulType/">检修类别</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a class="sidebar-sub-toggle"><i class="ti-user"></i> 用户 <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            <ul>
+                                <li><a href="/myapp/show_Add_User/">用户添加</a></li>
+                                <li><a href="/myapp/Show_User/">用户查询</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="/myapp/logs_show/" ><i class="ti-map"></i> 日志文件 </a></li>
+
+                        <li><a href="/myapp/documentation/"><i class="ti-file"></i> 说明文档</a></li>
+                        <li><a href="/myapp/logout/"><i class="ti-close"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>事故记录添加</title>
+        <!-- Styles -->
+        <link href="{% static 'css/lib/calendar2/pignose.calendar.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/chartist/chartist.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/lib/weather-icons.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/lib/menubar/sidebar.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/lib/helper.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+
+{#    左边菜单#}
+    {% include 'menu.html' %}
+
+
+{#    顶部显示#}
+    {% include 'top.html' %}
+
+
+        <!-- /# sidebar -->
+        <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>事故记录添加</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-4 p-l-0 title-margin-left">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                    <li class="breadcrumb-item active">事故记录添加</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <section id="main-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-validation">
+                                        <form class="form-valide" action="/myapp/Add_Equipment_Downtime_option/" method="post">
+
+                                            {% csrf_token %}
+
+                                            {% if msg == "添加完成！" %}
+
+                                                <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"><span class="text-danger"></span></label>
+                                                <div class="col-lg-8">
+                                                    <span class="text-danger">{{ msg }}</span>
+                                                </div>
+                                            </div>
+
+                                            {% endif %}
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username"> 区域 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="Failure-Area" name="Failure-Area" placeholder="区域.." required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-username"> 设备编号 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="Failure-Main_Equipment_ID" name="Failure-Main_Equipment_ID" placeholder="设备编号.." required="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 设备类型 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="Fault-Equipment_Type" name="Fault-Equipment_Type" placeholder="设备类型.." required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 事故种类 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="Fault-Type" name="Fault-Type" placeholder="事故种类.." required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 事故子种类 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="Fault-Sub_Type" name="Fault-Sub_Type" placeholder="事故子种类.." required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 描述 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <textarea class="form-control" id="Descriptions" name="Descriptions" placeholder="描述" style="height:80px" required=""></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 是否已维修 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+{#                                                    <input type="text" class="form-control" id="Fault-Fixed" name="Fault-Fixed" placeholder="请是否已维修.." required="" value={{ Email }}>#}
+                                                    <select class="form-control" id="Fault-Fixed" name="Fault-Fixed">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> Line <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="text" class="form-control" id="Fault-Line" name="Fault-Line" placeholder="Line.." required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 导致停产 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+{#                                                    <input type="text" class="form-control" id="Fault-Caused_New_Feed_Offline" name="Fault-Caused_New_Feed_Offline" placeholder="导致停产.." required="" value={{ Email }}>#}
+                                                    <select class="form-control" id="Fault-Caused_New_Feed_Offline" name="Fault-Caused_New_Feed_Offline">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 开始时间 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="date" class="form-control" id="Fault-From_date" name="Fault-From_date" required="">
+                                                    <input type="time" class="form-control" id="Fault-From_time" name="Fault-From_time" required="">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-4 col-form-label" for="val-email"> 结束时间 <span class="text-danger">*</span></label>
+                                                <div class="col-lg-8">
+                                                    <input type="date" class="form-control" id="Fault-To_date" name="Fault-To_date" required="">
+                                                    <input type="time" class="form-control" id="Fault-To_time" name="Fault-To_time" required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-lg-8 ml-auto">
+                                                    <button type="submit" class="btn btn-primary"> 提 交 </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% include 'under.html' %}
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+        <!-- jquery vendor -->
+        <script src="{% static 'js/lib/jquery.min.js' %}"></script>
+        <script src="{% static 'js/lib/jquery.nanoscroller.min.js' %}"></script>
+        <!-- nano scroller -->
+        <script src="{% static 'js/lib/menubar/sidebar.js' %}"></script>
+        <script src="{% static 'js/lib/preloader/pace.min.js' %}"></script>
+        <!-- sidebar -->
+
+        <script src="{% static 'js/lib/bootstrap.min.js' %}"></script><script src="{% static 'js/scripts.js' %}"></script>
+        <!-- bootstrap -->
+
+        <script src="{% static 'js/lib/calendar-2/moment.latest.min.js' %}"></script>
+        <script src="{% static 'js/lib/calendar-2/pignose.calendar.min.js' %}"></script>
+        <script src="{% static 'js/lib/calendar-2/pignose.init.js' %}"></script>
+
+
+        <script src="{% static 'js/lib/weather/jquery.simpleWeather.min.js' %}"></script>
+        <script src="{% static 'js/lib/weather/weather-init.js' %}"></script>
+        <script src="{% static 'js/lib/circle-progress/circle-progress.min.js' %}"></script>
+        <script src="{% static 'js/lib/circle-progress/circle-progress-init.js' %}"></script>
+        <script src="{% static 'js/lib/chartist/chartist.min.js' %}"></script>
+        <script src="{% static 'js/lib/sparklinechart/jquery.sparkline.min.js' %}"></script>
+        <script src="{% static 'js/lib/sparklinechart/sparkline.init.js' %}"></script>
+        <script src="{% static 'js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
+        <!-- scripit init-->
+    <script src="{% static 'js/dashboard2.js' %}"></script>
+    </body>
+
+</html>

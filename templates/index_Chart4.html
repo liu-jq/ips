@@ -1,0 +1,65 @@
+<div class="bootstrap-data-table-panel">
+                                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr align="center" valign="middle">
+                                                    <th>区域</th>
+{#                                                    <th>设备编号</th>#}
+{#                                                    <th>设备类型</th>#}
+                                                    <th>事故种类</th>
+{#                                                    <th>事故子种类</th>#}
+{#                                                    <th>描述</th>#}
+                                                    <th>是否已维修</th>
+{#                                                    <th>Line</th>#}
+                                                    <th>导致停产</th>
+                                                    <th>开始时间</th>
+                                                    <th>结束时间</th>
+                                                    <th>宕机时长</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                {% for E in Equipment_Downtime %}
+                                                    <tr align="center">
+                                                        <td width="6%">{{ E.Area }}</td>
+{#                                                        <td width="6%">{{ E.Main_Equipment_ID }}</td>#}
+{#                                                        <td width="6%">{{ E.Fault_Equipment_Type }}</td>#}
+                                                        <td width="4%">{{ E.Fault_Type }}</td>
+{#                                                        <td width="4%">{{ E.Sub_Fault_Type }}</td>#}
+{#                                                        <td width="30%">{{ E.Descriptions }}</td>#}
+                                                        <td width="5%">{{ E.Fixed }}</td>
+{#                                                        <td width="6%">{{ E.Line }}</td>#}
+                                                        <td width="4%">{{ E.Caused_New_Feed_Offline }}</td>
+                                                        <td width="12%">{{ E.From }}</td>
+                                                        <td width="12%">{{ E.To }}</td>
+                                                        <td width="6%">{{ E.Down_time }}</td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+
+                                            </tbody>
+                                        </table>
+
+                                          <div align="right">
+
+                                          <p> </p>
+
+                                            {% if Equipment_Downtime.has_previous %}
+                                                <a href="/myapp/show_failure_list/?page_id={{Equipment_Downtime.previous_page_number}}">
+                                                    <button> &nbsp;<< 上一页 &nbsp;</button> &nbsp;
+                                                </a>
+                                            {% endif %}
+
+                                                <a href="/myapp/show_failure_list/?page_id={{page_id}}">
+                                                    <button> &nbsp; {{ page_id }} / {{ num_pages }} &nbsp; </button>
+                                                </a>
+
+                                            {% if Equipment_Downtime.has_next %}
+                                                <a href="/myapp/show_failure_list/?page_id={{Equipment_Downtime.next_page_number}}">
+                                                    &nbsp; <button> &nbsp;下一页 >> &nbsp; </button>
+                                                </a>
+                                            {% endif %}
+
+                                    </div>
+
+                                </div>

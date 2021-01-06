@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+	<title>系统登录</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content=""
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="{% static 'login_static/css/style.css' %}" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="{% static 'login_static/css/fontawesome-all.css' %}">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+	<!-- web-fonts -->
+	<link href="http://maxcdn.bootstrapcdn.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<!-- bg effect -->
+	<div id="bg">
+		<canvas></canvas>
+		<canvas></canvas>
+		<canvas></canvas>
+	</div>
+	<!-- //bg effect -->
+	<!-- title -->
+	<h1>Information Processing System（IPS）</h1>
+	<!-- //title -->
+	<!-- content -->
+	<div class="sub-main-w3">
+		<form action="/myapp/ulogin/" method="post">
+
+            {% csrf_token %}
+
+			<h2>现在登录
+				<i class="fas fa-level-down-alt"></i>
+			</h2>
+			<div class="form-style-agile">
+				<label>
+					<i class="fas fa-user"></i>
+                    登录名称
+				</label>
+				<input placeholder="登录名称" name="Login_name" type="text" required="" value="{{ Login_name }}">
+			</div>
+			<div class="form-style-agile">
+				<label>
+					<i class="fas fa-unlock-alt"></i>
+					密码
+				</label>
+				<input placeholder="密码" name="Pwd" type="password" required="">
+			</div>
+			<!-- checkbox -->
+            <div >
+                <span class="text-danger">{{ msg }}</span>
+            </div>
+			<!-- //checkbox -->
+			<input type="submit" value="登 录">
+		</form>
+	</div>
+	<!-- //content -->
+
+	<!-- copyright -->
+	<div class="footer">
+		{% include "under.html" %}
+	</div>
+	<!-- //copyright -->
+
+	<!-- Jquery -->
+	<script src="{% static 'login_static/js/jquery-3.3.1.min.js' %}"></script>
+	<!-- //Jquery -->
+
+	<!-- effect js -->
+	<script src="{% static 'login_static/js/canva_moving_effect.js' %}"></script>
+	<!-- //effect js -->
+
+</body>
+
+</html>
